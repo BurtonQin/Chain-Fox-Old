@@ -23,7 +23,7 @@ Examples:
     cargo lockbud -k deadlock -l mycrate1,mycrate2
     # skip detecting [mycrate1, mycrate2]
     cargo lockbud -k deadlock -b -l mycrate1,mycrate2
-    # canonical command with toolchain overriden and target triple specified
+    # canonical command with toolchain overridden and target triple specified
     cargo +nightly-2024-05-21 lockbud -k all -- --target riscv64gc-unknown-none-elf
 "#;
 
