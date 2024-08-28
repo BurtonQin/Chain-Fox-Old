@@ -56,35 +56,33 @@ fn main() {
     let mut rustc_command_line_arguments = args;
     rustc_driver::install_ice_hook("ice ice ice baby", |_| ());
     let exit_code = rustc_driver::catch_with_exit_code(|| {
-        let print: String = "--print=".into();
+        let print = "--print=";
         if rustc_command_line_arguments
             .iter()
-            .any(|arg| arg.starts_with(&print))
+            .any(|arg| arg.starts_with(print))
         {
             // If a --print option is given on the command line we wont get called to analyze
             // anything. We also don't want to the caller to know that LOCKBUD adds configuration
             // parameters to the command line, lest the caller be cargo and it panics because
             // the output from --print=cfg is not what it expects.
         } else {
-            let sysroot: String = "--sysroot".into();
+            let sysroot = "--sysroot";
             if !rustc_command_line_arguments
                 .iter()
-                .any(|arg| arg.starts_with(&sysroot))
+                .any(|arg| arg.starts_with(sysroot))
             {
                 // Tell compiler where to find the std library and so on.
                 // The compiler relies on the standard rustc driver to tell it, so we have to do likewise.
-                rustc_command_line_arguments.push(sysroot);
-                rustc_command_line_arguments.push(find_sysroot());
+                rustc_command_line_arguments.push(format!("{sysroot}={}", find_sysroot()));
             }
 
-            let always_encode_mir: String = "always-encode-mir".into();
+            let always_encode_mir = "always-encode-mir";
             if !rustc_command_line_arguments
                 .iter()
-                .any(|arg| arg.ends_with(&always_encode_mir))
+                .any(|arg| arg.ends_with(always_encode_mir))
             {
                 // Tell compiler to emit MIR into crate for every function with a body.
-                rustc_command_line_arguments.push("-Z".into());
-                rustc_command_line_arguments.push(always_encode_mir);
+                rustc_command_line_arguments.push(format!("-Z{always_encode_mir}"));
             }
         }
 
