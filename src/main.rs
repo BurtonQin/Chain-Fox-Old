@@ -53,12 +53,9 @@ fn main() {
         args.remove(1);
     }
 
-    let mut rustc_command_line_arguments: Vec<String> = args[1..].into();
+    let mut rustc_command_line_arguments = args;
     rustc_driver::install_ice_hook("ice ice ice baby", |_| ());
     let exit_code = rustc_driver::catch_with_exit_code(|| {
-        // Add back the binary name
-        rustc_command_line_arguments.insert(0, args[0].clone());
-
         let print: String = "--print=".into();
         if rustc_command_line_arguments
             .iter()
