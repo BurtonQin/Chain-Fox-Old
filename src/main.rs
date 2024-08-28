@@ -34,13 +34,13 @@ fn main() {
     // Get any options specified via the LOCKBUD_FLAGS environment variable
     let options = Options::parse_from_str(&std::env::var("LOCKBUD_FLAGS").unwrap_or_default())
         .unwrap_or_default();
-    debug!("LOCKBUD options from environment: {:?}", options);
+    debug!("LOCKBUD options from environment: {options:?}");
     let mut args = std::env::args_os()
         .enumerate()
         .map(|(i, arg)| {
             arg.into_string().unwrap_or_else(|arg| {
                 handler.early_fatal(
-                    format!("Argument {} is not valid Unicode: {:?}", i, arg).to_string(),
+                    format!("Argument {i} is not valid Unicode: {arg:?}")
                 )
             })
         })
@@ -87,10 +87,7 @@ fn main() {
         }
 
         let mut callbacks = callbacks::LockBudCallbacks::new(options);
-        debug!(
-            "rustc_command_line_arguments {:?}",
-            rustc_command_line_arguments
-        );
+        debug!("rustc_command_line_arguments {rustc_command_line_arguments:?}");
         let compiler =
             rustc_driver::RunCompiler::new(&rustc_command_line_arguments, &mut callbacks);
         compiler.run()
