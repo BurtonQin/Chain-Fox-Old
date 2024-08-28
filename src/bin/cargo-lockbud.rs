@@ -51,7 +51,11 @@ fn in_cargo_lockbud() {
     cmd.arg("build");
     cmd.env("RUSTC_WRAPPER", "lockbud");
     cmd.env("RUST_BACKTRACE", "full");
-    cmd.env("LOCKBUD_LOG", "info");
+
+    // Pass LOCKBUD_LOG if specified by the user. Default to info if not specified.
+    const LOCKBUD_LOG: &str = "LOCKBUD_LOG";
+    let log_level = env::var(LOCKBUD_LOG).ok();
+    cmd.env(LOCKBUD_LOG, log_level.as_deref().unwrap_or("info"));
 
     let mut args = std::env::args().skip(2);
 
