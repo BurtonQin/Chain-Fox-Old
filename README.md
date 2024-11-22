@@ -151,6 +151,12 @@ $ cd YourProject; cargo clean; cargo lockbud -k deadlock -b -l cc,tokio_util,ind
 
 You have ommitted the checking of dependencies cc, tokio_util, indicatif .
 
+You can also ensure to use the right version of the compiler by running:
+
+```
+$ cargo +nightly-2024-10-05 lockbud
+```
+
 ### Using by docker
 
 Current available docker image is `burtonqin/lockbud`[^1]
