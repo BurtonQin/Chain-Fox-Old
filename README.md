@@ -35,7 +35,7 @@ The deadlock detectors (double-lock and conflicting-lock-order) perform better t
 To reduce the detectors' overhead, I did not introduce SMTs or other expensive analyses. As a result, the panic location detector may report nearly all the panic locations, making it less useful. I hope that a new, unified static analysis framework for Rust will emerge soon to address these limitations.
 
 ## Install
-Currently supports rustc nightly-2024-05-21 (Thanks to @mokhaled2992).
+Currently supports rustc nightly-2024-10-05 (Thanks to @mokhaled2992).
 ```
 $ git clone https://github.com/BurtonQin/lockbud.git
 $ cd lockbud
