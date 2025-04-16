@@ -1,0 +1,11 @@
+[package]
+name = "RUSTSEC-2022-0029"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+mem = "0.5"
+crossbeam = "0.2.10"
+scope = "0.0.2"

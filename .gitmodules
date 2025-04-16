@@ -1,0 +1,9 @@
+[submodule "cpp-checker/cppcheck"]
+	path = cpp-checker/cppcheck
+	url = https://github.com/danmar/cppcheck.git
+[submodule "rust-checker/dynamic/ERASan"]
+	path = rust-checker/dynamic/ERASan
+	url = git@github.com:S2-Lab/ERASan.git
+[submodule "rust-checker/dynamic/shuttle"]
+	path = rust-checker/dynamic/shuttle
+	url = https://github.com/awslabs/shuttle.git
