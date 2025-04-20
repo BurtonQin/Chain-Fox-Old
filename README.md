@@ -4,6 +4,8 @@ Bringing automated analysis to blockchain security.
 
 [Chain-Fox WebSite](https://chain-fox.com)
 
+This aims to be a commercial product. The original lockbud is maintained in [lockbud](https://github.com/BurtonQin/lockbud). Issues will be resolved there.
+
 ## Why Chain-Fox
 
 Security is the biggest concern for blockchain and smart contract users and developers.
