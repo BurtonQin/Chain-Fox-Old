@@ -4,6 +4,12 @@ Bringing automated analysis to blockchain security.
 
 [Chain-Fox WebSite](https://chain-fox.com)
 
+[Discord](https://discord.gg/9Eyut3GJ)
+
+[X](https://x.com/ChainFoxHQ)
+
+CA: RhFVq1Zt81VvcoSEMSyCGZZv5SwBdA8MV7w4HEMpump
+
 This aims to be a commercial product. The original lockbud is maintained in [lockbud](https://github.com/BurtonQin/lockbud). Issues will be resolved there.
 
 ## Why Chain-Fox
