@@ -13,3 +13,6 @@
 [submodule "solidity-checker/slither"]
 	path = solidity-checker/slither
 	url = https://github.com/Chain-Fox/slither
+[submodule "rust-checker/dynamic/ERASan"]
+	path = rust-checker/dynamic/ERASan
+	url = https://github.com/Chain-Fox/ERASan
