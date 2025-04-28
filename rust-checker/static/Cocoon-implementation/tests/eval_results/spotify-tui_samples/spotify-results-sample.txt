@@ -1,0 +1,26 @@
+COMPILE TIME
+tests/eval_results/spotify-tui-original-compile-results.csv: duration (s): 16.214 +- 0.246
+tests/eval_results/spotify-tui-original-compile-results.csv: elapsed (s): 43.700 +- 0.829
+tests/eval_results/spotify-tui-cocoon-compile-results.csv: duration (s): 16.982 +- 1.455
+tests/eval_results/spotify-tui-cocoon-compile-results.csv: elapsed (s): 44.500 +- 1.792
+ 
+RUN TIME
+Running 10000 trials...
+spotify-tui-original-results.csv: 4206: 2957.129 +- 18.129
+spotify-tui-cocoon-results.csv: 4195: 2958.925 +- 17.979
+Finished 10000 trials
+ 
+LINES OF CODE
+ artifact/overview.md                               |  14 +-
+ .../spotify-tui/spotify-tui-cocoon/src/config.rs   | 182 +++++----------------
+ .../spotify-tui/spotify-tui-cocoon/src/main.rs     |  26 +--
+ .../spotify-tui/spotify-tui-cocoon/src/network.rs  |   8 +-
+ .../spotify-tui-cocoon/src/redirect_uri.rs         |   6 +-
+ tests/README.md                                    |   1 -
+ tests/eval-servo.sh                                |  54 ------
+ tests/eval.sh                                      |  12 +-
+ 8 files changed, 62 insertions(+), 241 deletions(-)
+ 
+EXECUTABLE SIZE
+ifc_examples/spotify-tui/spotify-tui-cocoon/ executable size (bytes): 16669432
+ifc_examples/spotify-tui/spotify-tui-original/ executable size (bytes): 16735088

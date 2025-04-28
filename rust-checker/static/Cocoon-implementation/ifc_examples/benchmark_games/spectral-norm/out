@@ -1,0 +1,378 @@
+#![feature(prelude_import)]
+#![feature(negative_impls)]
+#[prelude_import]
+use std::prelude::rust_2021::*;
+#[macro_use]
+extern crate std;
+extern crate rayon;
+use rayon::prelude::*;
+use std::ops::*;
+use secret_macros::SecretBlockSafeDerive;
+use secret_macros::info_leak_free;
+use secret_structs::lattice::ternary_lattice as lat;
+use secret_structs::secret::secret as st;
+struct F64x2 {
+    f0: f64,
+    f1: f64,
+}
+#[automatically_derived]
+impl ::core::clone::Clone for F64x2 {
+    #[inline]
+    fn clone(&self) -> F64x2 {
+        let _: ::core::clone::AssertParamIsClone<f64>;
+        *self
+    }
+}
+#[automatically_derived]
+impl ::core::marker::Copy for F64x2 {}
+#[automatically_derived]
+unsafe impl secret_structs::secret::secret::SecretBlockSafe for F64x2 {
+    unsafe fn check_all_types() {
+        secret_structs::secret::secret::check_type_is_secret_block_safe::<f64>();
+        secret_structs::secret::secret::check_type_is_secret_block_safe::<f64>();
+    }
+}
+#[automatically_derived]
+impl !::std::ops::Drop for F64x2 {}
+#[automatically_derived]
+impl !::std::ops::Deref for F64x2 {}
+#[automatically_derived]
+impl !::std::ops::DerefMut for F64x2 {}
+fn __splat_secret_trampoline(x: f64) -> F64x2 {
+    F64x2 { f0: x, f1: x }
+}
+unsafe fn splat(x: f64) -> secret_structs::secret::secret::InfoLeakFreeReturn<F64x2> {
+    secret_structs::secret::secret::InfoLeakFreeReturn::<
+        F64x2,
+    >::wrap(__splat_secret_trampoline(x))
+}
+impl F64x2 {}
+fn main() {
+    let n = std::env::args().nth(1).and_then(|n| n.parse().ok()).unwrap_or(100);
+    let answer: st::Secret<f64, lat::A> = if true {
+        secret_structs::secret::secret::call_closure::<
+            lat::A,
+            _,
+            _,
+        >(
+            (|| -> _ {
+                {
+                    {
+                        secret_structs::secret::secret::Secret::<
+                            _,
+                            lat::A,
+                        >::new(
+                            (unsafe {
+                                (spectralnorm(n)
+                                    as secret_structs::secret::secret::InfoLeakFreeReturn<_>)
+                                    .unwrap()
+                            }),
+                        )
+                    }
+                }
+            }),
+        )
+    } else {
+        secret_structs::secret::secret::call_closure::<
+            lat::A,
+            _,
+            _,
+        >(
+            (|| -> _ {
+                {
+                    {
+                        secret_structs::secret::secret::Secret::<
+                            _,
+                            lat::A,
+                        >::new(
+                            (unsafe {
+                                (spectralnorm(
+                                    secret_structs::secret::secret::check_expr_secret_block_safe(
+                                        &(n),
+                                    ),
+                                ) as secret_structs::secret::secret::InfoLeakFreeReturn<_>)
+                                    .unwrap()
+                            }),
+                        )
+                    }
+                }
+            }),
+        )
+    };
+    {
+        ::std::io::_print(
+            ::core::fmt::Arguments::new_v1_formatted(
+                &["", "\n"],
+                &[
+                    ::core::fmt::ArgumentV1::new_display(
+                        &answer.declassify_consume().get_value_consume(),
+                    ),
+                ],
+                &[
+                    ::core::fmt::rt::v1::Argument {
+                        position: 0usize,
+                        format: ::core::fmt::rt::v1::FormatSpec {
+                            fill: ' ',
+                            align: ::core::fmt::rt::v1::Alignment::Unknown,
+                            flags: 0u32,
+                            precision: ::core::fmt::rt::v1::Count::Is(9usize),
+                            width: ::core::fmt::rt::v1::Count::Implied,
+                        },
+                    },
+                ],
+                unsafe { ::core::fmt::UnsafeArg::new() },
+            ),
+        );
+    };
+}
+fn __spectralnorm_secret_trampoline(n: usize) -> f64 {
+    let mut u: std::vec::Vec<F64x2> = std::vec::Vec::new();
+    let mut i = 0usize;
+    let limit = secret_structs::secret::secret::SafeDiv::safe_div(
+        secret_structs::secret::secret::check_expr_secret_block_safe(&(n)),
+        secret_structs::secret::secret::check_expr_secret_block_safe(&(2)),
+    );
+    while secret_structs::secret::secret::SafePartialOrd::safe_lt(
+        secret_structs::secret::secret::check_expr_secret_block_safe(&(&i)),
+        secret_structs::secret::secret::check_expr_secret_block_safe(&(&limit)),
+    ) {
+        {
+            std::vec::Vec::push(
+                secret_structs::secret::secret::check_expr_secret_block_safe(&(&mut u)),
+                secret_structs::secret::secret::check_expr_secret_block_safe(
+                    &((unsafe {
+                        (splat(
+                            secret_structs::secret::secret::check_expr_secret_block_safe(
+                                &(1.0),
+                            ),
+                        ) as secret_structs::secret::secret::InfoLeakFreeReturn<_>)
+                            .unwrap()
+                    })),
+                ),
+            );
+            secret_structs::secret::secret::SafeAddAssign::safe_add_assign(
+                secret_structs::secret::secret::check_expr_secret_block_safe(&(&mut i)),
+                secret_structs::secret::secret::check_expr_secret_block_safe(&(1)),
+            );
+        }
+    }
+    let mut v: std::vec::Vec<F64x2> = std::vec::Vec::new();
+    let mut i = 0;
+    while secret_structs::secret::secret::SafePartialOrd::safe_lt(
+        secret_structs::secret::secret::check_expr_secret_block_safe(&(&i)),
+        secret_structs::secret::secret::check_expr_secret_block_safe(&(&limit)),
+    ) {
+        {
+            std::vec::Vec::push(
+                secret_structs::secret::secret::check_expr_secret_block_safe(&(&mut v)),
+                secret_structs::secret::secret::check_expr_secret_block_safe(
+                    &((unsafe {
+                        (splat(
+                            secret_structs::secret::secret::check_expr_secret_block_safe(
+                                &(1.0),
+                            ),
+                        ) as secret_structs::secret::secret::InfoLeakFreeReturn<_>)
+                            .unwrap()
+                    })),
+                ),
+            );
+            secret_structs::secret::secret::SafeAddAssign::safe_add_assign(
+                secret_structs::secret::secret::check_expr_secret_block_safe(&(&mut i)),
+                secret_structs::secret::secret::check_expr_secret_block_safe(&(1)),
+            );
+        }
+    }
+    let mut tmp: std::vec::Vec<F64x2> = std::vec::Vec::new();
+    let mut i = 0;
+    while secret_structs::secret::secret::SafePartialOrd::safe_lt(
+        secret_structs::secret::secret::check_expr_secret_block_safe(&(&i)),
+        secret_structs::secret::secret::check_expr_secret_block_safe(&(&limit)),
+    ) {
+        {
+            std::vec::Vec::push(
+                secret_structs::secret::secret::check_expr_secret_block_safe(
+                    &(&mut tmp),
+                ),
+                secret_structs::secret::secret::check_expr_secret_block_safe(
+                    &((unsafe {
+                        (splat(
+                            secret_structs::secret::secret::check_expr_secret_block_safe(
+                                &(0.0),
+                            ),
+                        ) as secret_structs::secret::secret::InfoLeakFreeReturn<_>)
+                            .unwrap()
+                    })),
+                ),
+            );
+            secret_structs::secret::secret::SafeAddAssign::safe_add_assign(
+                secret_structs::secret::secret::check_expr_secret_block_safe(&(&mut i)),
+                secret_structs::secret::secret::check_expr_secret_block_safe(&(1)),
+            );
+        }
+    }
+    let mut i = 0;
+    while secret_structs::secret::secret::SafePartialOrd::safe_lt(
+        secret_structs::secret::secret::check_expr_secret_block_safe(&(&i)),
+        secret_structs::secret::secret::check_expr_secret_block_safe(&(&10)),
+    ) {
+        {
+            let u_ref: &[F64x2] = &u;
+            let v_ref: &mut [F64x2] = &mut v;
+            let mut_tmp_ref: &mut [F64x2] = &mut tmp;
+            (unsafe {
+                (mult_at_av(
+                    secret_structs::secret::secret::check_expr_secret_block_safe(
+                        &(u_ref),
+                    ),
+                    secret_structs::secret::secret::check_expr_secret_block_safe(
+                        &(v_ref),
+                    ),
+                    secret_structs::secret::secret::check_expr_secret_block_safe(
+                        &(mut_tmp_ref),
+                    ),
+                ) as secret_structs::secret::secret::InfoLeakFreeReturn<_>)
+                    .unwrap()
+            });
+            let u_mut_ref: &mut [F64x2] = &mut u;
+            let v_ref: &[F64x2] = &v;
+            (unsafe {
+                (mult_at_av(
+                    secret_structs::secret::secret::check_expr_secret_block_safe(
+                        &(v_ref),
+                    ),
+                    secret_structs::secret::secret::check_expr_secret_block_safe(
+                        &(u_mut_ref),
+                    ),
+                    secret_structs::secret::secret::check_expr_secret_block_safe(
+                        &(mut_tmp_ref),
+                    ),
+                ) as secret_structs::secret::secret::InfoLeakFreeReturn<_>)
+                    .unwrap()
+            });
+            secret_structs::secret::secret::SafeAddAssign::safe_add_assign(
+                secret_structs::secret::secret::check_expr_secret_block_safe(&(&mut i)),
+                secret_structs::secret::secret::check_expr_secret_block_safe(&(1)),
+            );
+        }
+    }
+    let uref: &[F64x2] = &u;
+    let vref: &[F64x2] = &v;
+    std::primitive::f64::sqrt(
+        secret_structs::secret::secret::check_expr_secret_block_safe(
+            &(secret_structs::secret::secret::SafeDiv::safe_div(
+                secret_structs::secret::secret::check_expr_secret_block_safe(
+                    &((unsafe {
+                        (dot(
+                            secret_structs::secret::secret::check_expr_secret_block_safe(
+                                &(uref),
+                            ),
+                            secret_structs::secret::secret::check_expr_secret_block_safe(
+                                &(vref),
+                            ),
+                        ) as secret_structs::secret::secret::InfoLeakFreeReturn<_>)
+                            .unwrap()
+                    })),
+                ),
+                secret_structs::secret::secret::check_expr_secret_block_safe(
+                    &((unsafe {
+                        (dot(
+                            secret_structs::secret::secret::check_expr_secret_block_safe(
+                                &(vref),
+                            ),
+                            secret_structs::secret::secret::check_expr_secret_block_safe(
+                                &(vref),
+                            ),
+                        ) as secret_structs::secret::secret::InfoLeakFreeReturn<_>)
+                            .unwrap()
+                    })),
+                ),
+            )),
+        ),
+    )
+}
+unsafe fn spectralnorm(
+    n: usize,
+) -> secret_structs::secret::secret::InfoLeakFreeReturn<f64> {
+    secret_structs::secret::secret::InfoLeakFreeReturn::<
+        f64,
+    >::wrap(__spectralnorm_secret_trampoline(n))
+}
+fn __mult_at_av_secret_trampoline(v: &[F64x2], out: &mut [F64x2], tmp: &mut [F64x2]) {}
+unsafe fn mult_at_av(
+    v: &[F64x2],
+    out: &mut [F64x2],
+    tmp: &mut [F64x2],
+) -> secret_structs::secret::secret::InfoLeakFreeReturn<()> {
+    secret_structs::secret::secret::InfoLeakFreeReturn::<
+        (),
+    >::wrap(__mult_at_av_secret_trampoline(v, out, tmp))
+}
+fn __mult_secret_trampoline<F>(v: &[F64x2], out: &mut [F64x2], a: F)
+where
+    F: Fn([usize; 2], [usize; 2]) -> F64x2 + Sync,
+{
+    (unsafe {
+        (splat(secret_structs::secret::secret::check_expr_secret_block_safe(&(0.0)))
+            as secret_structs::secret::secret::InfoLeakFreeReturn<_>)
+            .unwrap()
+    })
+}
+unsafe fn mult<F>(
+    v: &[F64x2],
+    out: &mut [F64x2],
+    a: F,
+) -> secret_structs::secret::secret::InfoLeakFreeReturn<()>
+where
+    F: Fn([usize; 2], [usize; 2]) -> F64x2 + Sync,
+{
+    secret_structs::secret::secret::InfoLeakFreeReturn::<
+        (),
+    >::wrap(__mult_secret_trampoline(v, out, a))
+}
+fn __dot_secret_trampoline(v: &[F64x2], u: &[F64x2]) -> f64 {
+    let r = u
+        .iter()
+        .zip(v)
+        .map(|(&x, &y)| F64x2 {
+            f0: x.f0 * y.f0,
+            f1: x.f1 * y.f1,
+        })
+        .fold(
+            F64x2 { f0: 0.0, f1: 0.0 },
+            |s, x| F64x2 {
+                f0: s.f0 + x.f0,
+                f1: s.f1 + x.f1,
+            },
+        );
+    secret_structs::secret::secret::SafeAdd::safe_add(
+        secret_structs::secret::secret::check_expr_secret_block_safe(
+            &(((((secret_structs::secret::secret::check_expr_secret_block_safe(&r)))
+                .f0))),
+        ),
+        secret_structs::secret::secret::check_expr_secret_block_safe(
+            &(((((secret_structs::secret::secret::check_expr_secret_block_safe(&r)))
+                .f1))),
+        ),
+    )
+}
+unsafe fn dot(
+    v: &[F64x2],
+    u: &[F64x2],
+) -> secret_structs::secret::secret::InfoLeakFreeReturn<f64> {
+    secret_structs::secret::secret::InfoLeakFreeReturn::<
+        f64,
+    >::wrap(__dot_secret_trampoline(v, u))
+}
+fn __multiply_pair_secret_trampoline(pair: &(F64x2, F64x2)) -> F64x2 {
+    F64x2 {
+        f0: pair.0.f0 * pair.1.f0,
+        f1: pair.0.f1 * pair.1.f1,
+    }
+}
+unsafe fn multiply_pair(
+    pair: &(F64x2, F64x2),
+) -> secret_structs::secret::secret::InfoLeakFreeReturn<F64x2> {
+    secret_structs::secret::secret::InfoLeakFreeReturn::<
+        F64x2,
+    >::wrap(__multiply_pair_secret_trampoline(pair))
+}

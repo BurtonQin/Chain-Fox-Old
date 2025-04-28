@@ -1,0 +1,286 @@
+COMPILE TIME
+tests/eval_results/binary-trees-compile-results.csv: compile_time_package: 0.628 +- 0.008
+tests/eval_results/binary-trees-compile-results.csv: compile_time_total: 5.600 +- 0.369
+tests/eval_results/binary-trees-compile-results-original.csv: compile_time_package: 0.592 +- 0.004
+tests/eval_results/binary-trees-compile-results-original.csv: compile_time_total: 3.800 +- 0.302
+tests/eval_results/fannkuch-redux-compile-results.csv: compile_time_package: 0.495 +- 0.006
+tests/eval_results/fannkuch-redux-compile-results.csv: compile_time_total: 5.500 +- 0.377
+tests/eval_results/fannkuch-redux-compile-results-original.csv: compile_time_package: 0.393 +- 0.004
+tests/eval_results/fannkuch-redux-compile-results-original.csv: compile_time_total: 3.500 +- 0.377
+tests/eval_results/fasta-compile-results.csv: compile_time_package: 0.461 +- 0.004
+tests/eval_results/fasta-compile-results.csv: compile_time_total: 5.700 +- 0.895
+tests/eval_results/fasta-compile-results-original.csv: compile_time_package: 0.430 +- 0.018
+tests/eval_results/fasta-compile-results-original.csv: compile_time_total: 1.900 +- 0.226
+tests/eval_results/k-nucleotide-compile-results.csv: compile_time_package: 0.537 +- 0.024
+tests/eval_results/k-nucleotide-compile-results.csv: compile_time_total: 6.200 +- 0.302
+tests/eval_results/k-nucleotide-compile-results-original.csv: compile_time_package: 0.477 +- 0.014
+tests/eval_results/k-nucleotide-compile-results-original.csv: compile_time_total: 5.200 +- 0.302
+tests/eval_results/mandelbrot-compile-results.csv: compile_time_package: 0.753 +- 0.027
+tests/eval_results/mandelbrot-compile-results.csv: compile_time_total: 5.900 +- 0.406
+tests/eval_results/mandelbrot-compile-results-original.csv: compile_time_package: 0.563 +- 0.030
+tests/eval_results/mandelbrot-compile-results-original.csv: compile_time_total: 4.000 +- 0.337
+tests/eval_results/n-body-compile-results.csv: compile_time_package: 0.612 +- 0.156
+tests/eval_results/n-body-compile-results.csv: compile_time_total: 5.900 +- 0.711
+tests/eval_results/n-body-compile-results-original.csv: compile_time_package: 0.400 +- 0.002
+tests/eval_results/n-body-compile-results-original.csv: compile_time_total: 0.500 +- 0.377
+tests/eval_results/pidigits-compile-results.csv: compile_time_package: 0.494 +- 0.129
+tests/eval_results/pidigits-compile-results.csv: compile_time_total: 6.500 +- 1.273
+tests/eval_results/pidigits-compile-results-original.csv: compile_time_package: 0.489 +- 0.109
+tests/eval_results/pidigits-compile-results-original.csv: compile_time_total: 5.500 +- 1.180
+tests/eval_results/regex-redux-compile-results.csv: compile_time_package: 0.861 +- 0.112
+tests/eval_results/regex-redux-compile-results.csv: compile_time_total: 8.000 +- 1.118
+tests/eval_results/regex-redux-compile-results-original.csv: compile_time_package: 0.714 +- 0.020
+tests/eval_results/regex-redux-compile-results-original.csv: compile_time_total: 6.700 +- 0.346
+tests/eval_results/spectral-norm-compile-results.csv: compile_time_package: 0.478 +- 0.005
+tests/eval_results/spectral-norm-compile-results.csv: compile_time_total: 5.700 +- 0.346
+tests/eval_results/spectral-norm-compile-results-original.csv: compile_time_package: 0.574 +- 0.172
+tests/eval_results/spectral-norm-compile-results-original.csv: compile_time_total: 4.500 +- 1.026
+ 
+RUN TIME
+Benchmarking binary-trees: (1 / 10)
+Benchmarking binary-trees: (2 / 10)
+Benchmarking binary-trees: (3 / 10)
+Benchmarking binary-trees: (4 / 10)
+Benchmarking binary-trees: (5 / 10)
+Benchmarking binary-trees: (6 / 10)
+Benchmarking binary-trees: (7 / 10)
+Benchmarking binary-trees: (8 / 10)
+Benchmarking binary-trees: (9 / 10)
+Benchmarking binary-trees: (10 / 10)
+Start benchmark for original implementation.
+Benchmarking binary-trees: (1 / 10)
+Benchmarking binary-trees: (2 / 10)
+Benchmarking binary-trees: (3 / 10)
+Benchmarking binary-trees: (4 / 10)
+Benchmarking binary-trees: (5 / 10)
+Benchmarking binary-trees: (6 / 10)
+Benchmarking binary-trees: (7 / 10)
+Benchmarking binary-trees: (8 / 10)
+Benchmarking binary-trees: (9 / 10)
+Benchmarking binary-trees: (10 / 10)
+
+Benchmarking fannkuch-redux: (1 / 10)
+Benchmarking fannkuch-redux: (2 / 10)
+Benchmarking fannkuch-redux: (3 / 10)
+Benchmarking fannkuch-redux: (4 / 10)
+Benchmarking fannkuch-redux: (5 / 10)
+Benchmarking fannkuch-redux: (6 / 10)
+Benchmarking fannkuch-redux: (7 / 10)
+Benchmarking fannkuch-redux: (8 / 10)
+Benchmarking fannkuch-redux: (9 / 10)
+Benchmarking fannkuch-redux: (10 / 10)
+Start benchmark for original implementation.
+Benchmarking fannkuch-redux: (1 / 10)
+Benchmarking fannkuch-redux: (2 / 10)
+Benchmarking fannkuch-redux: (3 / 10)
+Benchmarking fannkuch-redux: (4 / 10)
+Benchmarking fannkuch-redux: (5 / 10)
+Benchmarking fannkuch-redux: (6 / 10)
+Benchmarking fannkuch-redux: (7 / 10)
+Benchmarking fannkuch-redux: (8 / 10)
+Benchmarking fannkuch-redux: (9 / 10)
+Benchmarking fannkuch-redux: (10 / 10)
+
+Benchmarking fasta: (1 / 10)
+Benchmarking fasta: (2 / 10)
+Benchmarking fasta: (3 / 10)
+Benchmarking fasta: (4 / 10)
+Benchmarking fasta: (5 / 10)
+Benchmarking fasta: (6 / 10)
+Benchmarking fasta: (7 / 10)
+Benchmarking fasta: (8 / 10)
+Benchmarking fasta: (9 / 10)
+Benchmarking fasta: (10 / 10)
+Start benchmark for original implementation.
+Benchmarking fasta: (1 / 10)
+Benchmarking fasta: (2 / 10)
+Benchmarking fasta: (3 / 10)
+Benchmarking fasta: (4 / 10)
+Benchmarking fasta: (5 / 10)
+Benchmarking fasta: (6 / 10)
+Benchmarking fasta: (7 / 10)
+Benchmarking fasta: (8 / 10)
+Benchmarking fasta: (9 / 10)
+Benchmarking fasta: (10 / 10)
+
+Benchmarking k-nucleotide: (1 / 10)
+Benchmarking k-nucleotide: (2 / 10)
+Benchmarking k-nucleotide: (3 / 10)
+Benchmarking k-nucleotide: (4 / 10)
+Benchmarking k-nucleotide: (5 / 10)
+Benchmarking k-nucleotide: (6 / 10)
+Benchmarking k-nucleotide: (7 / 10)
+Benchmarking k-nucleotide: (8 / 10)
+Benchmarking k-nucleotide: (9 / 10)
+Benchmarking k-nucleotide: (10 / 10)
+Start benchmark for original implementation.
+Benchmarking k-nucleotide: (1 / 10)
+Benchmarking k-nucleotide: (2 / 10)
+Benchmarking k-nucleotide: (3 / 10)
+Benchmarking k-nucleotide: (4 / 10)
+Benchmarking k-nucleotide: (5 / 10)
+Benchmarking k-nucleotide: (6 / 10)
+Benchmarking k-nucleotide: (7 / 10)
+Benchmarking k-nucleotide: (8 / 10)
+Benchmarking k-nucleotide: (9 / 10)
+Benchmarking k-nucleotide: (10 / 10)
+
+Benchmarking mandelbrot: (1 / 10)
+Benchmarking mandelbrot: (2 / 10)
+Benchmarking mandelbrot: (3 / 10)
+Benchmarking mandelbrot: (4 / 10)
+Benchmarking mandelbrot: (5 / 10)
+Benchmarking mandelbrot: (6 / 10)
+Benchmarking mandelbrot: (7 / 10)
+Benchmarking mandelbrot: (8 / 10)
+Benchmarking mandelbrot: (9 / 10)
+Benchmarking mandelbrot: (10 / 10)
+Start benchmark for original implementation.
+Benchmarking mandelbrot: (1 / 10)
+Benchmarking mandelbrot: (2 / 10)
+Benchmarking mandelbrot: (3 / 10)
+Benchmarking mandelbrot: (4 / 10)
+Benchmarking mandelbrot: (5 / 10)
+Benchmarking mandelbrot: (6 / 10)
+Benchmarking mandelbrot: (7 / 10)
+Benchmarking mandelbrot: (8 / 10)
+Benchmarking mandelbrot: (9 / 10)
+Benchmarking mandelbrot: (10 / 10)
+
+Benchmarking n-body: (1 / 10)
+Benchmarking n-body: (2 / 10)
+Benchmarking n-body: (3 / 10)
+Benchmarking n-body: (4 / 10)
+Benchmarking n-body: (5 / 10)
+Benchmarking n-body: (6 / 10)
+Benchmarking n-body: (7 / 10)
+Benchmarking n-body: (8 / 10)
+Benchmarking n-body: (9 / 10)
+Benchmarking n-body: (10 / 10)
+Start benchmark for original implementation.
+Benchmarking n-body: (1 / 10)
+Benchmarking n-body: (2 / 10)
+Benchmarking n-body: (3 / 10)
+Benchmarking n-body: (4 / 10)
+Benchmarking n-body: (5 / 10)
+Benchmarking n-body: (6 / 10)
+Benchmarking n-body: (7 / 10)
+Benchmarking n-body: (8 / 10)
+Benchmarking n-body: (9 / 10)
+Benchmarking n-body: (10 / 10)
+
+Benchmarking pidigits: (1 / 10)
+Benchmarking pidigits: (2 / 10)
+Benchmarking pidigits: (3 / 10)
+Benchmarking pidigits: (4 / 10)
+Benchmarking pidigits: (5 / 10)
+Benchmarking pidigits: (6 / 10)
+Benchmarking pidigits: (7 / 10)
+Benchmarking pidigits: (8 / 10)
+Benchmarking pidigits: (9 / 10)
+Benchmarking pidigits: (10 / 10)
+Start benchmark for original implementation.
+Benchmarking pidigits: (1 / 10)
+Benchmarking pidigits: (2 / 10)
+Benchmarking pidigits: (3 / 10)
+Benchmarking pidigits: (4 / 10)
+Benchmarking pidigits: (5 / 10)
+Benchmarking pidigits: (6 / 10)
+Benchmarking pidigits: (7 / 10)
+Benchmarking pidigits: (8 / 10)
+Benchmarking pidigits: (9 / 10)
+Benchmarking pidigits: (10 / 10)
+
+Benchmarking regex-redux: (1 / 10)
+Benchmarking regex-redux: (2 / 10)
+Benchmarking regex-redux: (3 / 10)
+Benchmarking regex-redux: (4 / 10)
+Benchmarking regex-redux: (5 / 10)
+Benchmarking regex-redux: (6 / 10)
+Benchmarking regex-redux: (7 / 10)
+Benchmarking regex-redux: (8 / 10)
+Benchmarking regex-redux: (9 / 10)
+Benchmarking regex-redux: (10 / 10)
+Start benchmark for original implementation.
+Benchmarking regex-redux: (1 / 10)
+Benchmarking regex-redux: (2 / 10)
+Benchmarking regex-redux: (3 / 10)
+Benchmarking regex-redux: (4 / 10)
+Benchmarking regex-redux: (5 / 10)
+Benchmarking regex-redux: (6 / 10)
+Benchmarking regex-redux: (7 / 10)
+Benchmarking regex-redux: (8 / 10)
+Benchmarking regex-redux: (9 / 10)
+Benchmarking regex-redux: (10 / 10)
+
+Benchmarking spectral-norm: (1 / 10)
+Benchmarking spectral-norm: (2 / 10)
+Benchmarking spectral-norm: (3 / 10)
+Benchmarking spectral-norm: (4 / 10)
+Benchmarking spectral-norm: (5 / 10)
+Benchmarking spectral-norm: (6 / 10)
+Benchmarking spectral-norm: (7 / 10)
+Benchmarking spectral-norm: (8 / 10)
+Benchmarking spectral-norm: (9 / 10)
+Benchmarking spectral-norm: (10 / 10)
+Start benchmark for original implementation.
+Benchmarking spectral-norm: (1 / 10)
+Benchmarking spectral-norm: (2 / 10)
+Benchmarking spectral-norm: (3 / 10)
+Benchmarking spectral-norm: (4 / 10)
+Benchmarking spectral-norm: (5 / 10)
+Benchmarking spectral-norm: (6 / 10)
+Benchmarking spectral-norm: (7 / 10)
+Benchmarking spectral-norm: (8 / 10)
+Benchmarking spectral-norm: (9 / 10)
+Benchmarking spectral-norm: (10 / 10)
+
+tests/eval_results/binary-trees-run-results.csv: time: 2.242 +- 0.034
+tests/eval_results/binary-trees-run-results.csv: max_rss: 191196.400 +- 58115.790
+tests/eval_results/fannkuch-redux-run-results.csv: time: 2.466 +- 0.305
+tests/eval_results/fannkuch-redux-run-results.csv: max_rss: 3176.400 +- 61.658
+tests/eval_results/fasta-run-results.csv: time: 1.544 +- 0.144
+tests/eval_results/fasta-run-results.csv: max_rss: 2710.800 +- 80.075
+tests/eval_results/k-nucleotide-run-results.csv: time: 2.692 +- 1.591
+tests/eval_results/k-nucleotide-run-results.csv: max_rss: 135865.200 +- 550.911
+tests/eval_results/mandelbrot-run-results.csv: time: 0.423 +- 0.068
+tests/eval_results/mandelbrot-run-results.csv: max_rss: 36202.400 +- 294.250
+tests/eval_results/n-body-run-results.csv: time: 53.640 +- 1.479
+tests/eval_results/n-body-run-results.csv: max_rss: 2140.000 +- 63.398
+tests/eval_results/pidigits-run-results.csv: time: 0.624 +- 0.018
+tests/eval_results/pidigits-run-results.csv: max_rss: 3033.200 +- 106.144
+tests/eval_results/regex-redux-run-results.csv: time: 1.025 +- 0.022
+tests/eval_results/regex-redux-run-results.csv: max_rss: 153941.600 +- 74.996
+tests/eval_results/spectral-norm-run-results.csv: time: 0.136 +- 0.021
+tests/eval_results/spectral-norm-run-results.csv: max_rss: 3791.600 +- 76.239
+ 
+LINES OF CODE
+ .../binary-trees => binary-trees}/src/main.rs      | 87 +++++++++++++++++-----
+ 1 file changed, 70 insertions(+), 17 deletions(-)
+ .../fannkuch-redux => fannkuch-redux}/src/main.rs  | 146 ++++++++++++++-------
+ 1 file changed, 102 insertions(+), 44 deletions(-)
+ {originals/fasta => fasta}/src/main.rs | 80 +++++++++++++++++++---------------
+ 1 file changed, 45 insertions(+), 35 deletions(-)
+ .../k-nucleotide => k-nucleotide}/src/main.rs      | 105 ++++++++++++++-------
+ 1 file changed, 71 insertions(+), 34 deletions(-)
+ {originals/mandelbrot => mandelbrot}/src/main.rs | 156 ++++++++++++-----------
+ 1 file changed, 85 insertions(+), 71 deletions(-)
+ {originals/n-body => n-body}/src/main.rs | 356 +++++++++++++++++++------------
+ 1 file changed, 222 insertions(+), 134 deletions(-)
+ {originals/pidigits => pidigits}/src/main.rs | 137 +++++++++++++++++----------
+ 1 file changed, 87 insertions(+), 50 deletions(-)
+ {originals/regex-redux => regex-redux}/src/main.rs | 64 +++++++++++++---------
+ 1 file changed, 38 insertions(+), 26 deletions(-)
+ .../spectral-norm => spectral-norm}/src/main.rs    | 141 ++++++++++++---------
+ 1 file changed, 82 insertions(+), 59 deletions(-)
+ 
+EXECUTABLE SIZE
+binary-trees executable size (bytes): 4536136
+fannkuch-redux executable size (bytes): 4461168
+fasta executable size (bytes): 4341488
+k-nucleotide executable size (bytes): 4363104
+mandelbrot executable size (bytes): 4514280
+n-body executable size (bytes): 4330544
+pidigits executable size (bytes): 4535968
+regex-redux executable size (bytes): 6784552
+spectral-norm executable size (bytes): 4485312

@@ -16,3 +16,6 @@
 [submodule "rust-checker/dynamic/ERASan"]
 	path = rust-checker/dynamic/ERASan
 	url = https://github.com/Chain-Fox/ERASan
+[submodule "Cocoon-implementation"]
+	path = Cocoon-implementation
+	url = git@github.com:Chain-Fox/Cocoon-implementation.git

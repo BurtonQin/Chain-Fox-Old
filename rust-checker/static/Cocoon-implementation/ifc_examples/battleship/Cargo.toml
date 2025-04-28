@@ -1,0 +1,13 @@
+[package]
+name = "battleship"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+rand = {version = "0.8.5"}
+regex = {version = "1.7.1"}
+secret_structs = {path = "../../ifc_library/secret_structs"}
+secret_macros = {path = "../../ifc_library/macros"}
+session_types = {version = "0.3.1"}

@@ -1,0 +1,23 @@
+[workspace]
+
+members = [
+    "ifc_examples/battleship",
+    "ifc_examples/battleship-no-ifc",
+    "ifc_examples/benchmark_games/*/",
+    "ifc_examples/benchmark_games/originals/*/",
+    "ifc_examples/counter_examples",
+    "ifc_examples/millionaires",
+    "ifc_examples/paper_calendar",
+    "ifc_examples/overloaded_operators",
+    "ifc_examples/spotify-tui/rspotify/",
+    "ifc_examples/spotify-tui/spotify-tui-cocoon/",
+    "ifc_examples/spotify-tui/spotify-tui-original/",
+    #"ifc_examples/deprecated_examples/paper_examples/",
+]
+exclude = [
+    "ifc_examples/benchmark_games/data",
+    "ifc_examples/benchmark_games/dependencies",
+    "ifc_examples/benchmark_games/originals",
+    "ifc_library/secret_structs",
+    "ifc_library/macros",
+]

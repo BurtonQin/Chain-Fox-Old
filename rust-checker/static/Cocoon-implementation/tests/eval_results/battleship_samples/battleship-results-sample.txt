@@ -1,0 +1,25 @@
+COMPILE TIME
+/home/lamba.39/info-flow-library
+tests/eval_results/battleship-no-ifc-compile-results.csv: duration (s): 0.789 +- 0.011
+tests/eval_results/battleship-no-ifc-compile-results.csv: elapsed (s): 6.800 +- 0.302
+tests/eval_results/battleship-compile-results.csv: duration (s): 0.867 +- 0.014
+tests/eval_results/battleship-compile-results.csv: elapsed (s): 7.300 +- 0.346
+ 
+RUN TIME
+tests/eval_results/battleship-no-ifc-runtime-results.csv: run time: 0.031 +- 0.000
+tests/eval_results/battleship-runtime-results.csv: run time: 0.029 +- 0.000
+ 
+LINES OF CODE
+ artifact/overview.md                       | 14 ++++---
+ ifc_examples/battleship-no-ifc/Cargo.toml  |  4 +-
+ ifc_examples/battleship-no-ifc/src/main.rs | 63 +++++++++++++++++++++---------
+ ifc_examples/battleship-no-ifc/src/util.rs |  4 +-
+ tests/README.md                            |  1 -
+ tests/eval-servo.sh                        | 54 -------------------------
+ tests/eval.sh                              | 12 +-----
+ 7 files changed, 61 insertions(+), 91 deletions(-)
+ 
+EXECUTABLE SIZE
+ifc_examples/battleship-no-ifc executable size (bytes): 6715464
+ifc_examples/battleship executable size (bytes): 6727792
+ 
