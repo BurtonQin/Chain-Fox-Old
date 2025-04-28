@@ -19,6 +19,7 @@ use crate::analysis::callgraph::CallGraph;
 
 use crate::detector::atomic::AtomicityViolationDetector;
 use crate::detector::lock::DeadlockDetector;
+// use crate::detector::chan::ChanDetector;
 use crate::detector::panic::PanicDetector;
 use crate::detector::report::Report;
 
@@ -117,6 +118,7 @@ impl LockBudCallbacks {
         let typing_env = TypingEnv::fully_monomorphized();
         callgraph.analyze(instances.clone(), tcx, typing_env);
         let mut alias_analysis = AliasAnalysis::new(tcx, &callgraph);
+        self.options.detector_kind = DetectorKind::Chan;
         match self.options.detector_kind {
             DetectorKind::Deadlock => {
                 debug!("Detecting deadlock");
@@ -157,6 +159,11 @@ impl LockBudCallbacks {
                     let stats = report_stats(&crate_name, &reports);
                     warn!("{}", stats);
                 }
+            }
+            DetectorKind::Chan => {
+                // debug!("Detecting chan bugs");
+                // let mut chan_detector = ChanDetector::new(tcx, typing_env);
+                // chan_detector.detect(&callgraph, &mut alias_analysis);
             }
             DetectorKind::All => {
                 debug!("Detecting all bugs");

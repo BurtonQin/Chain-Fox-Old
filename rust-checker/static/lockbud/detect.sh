@@ -16,7 +16,7 @@ export RUSTC_WRAPPER=${PWD}/target/debug/lockbud
 # cargo build --release
 # export RUSTC_WRAPPER=${PWD}/target/release/lockbud
 export RUST_BACKTRACE=full
-export LOCKBUD_LOG=info
+export LOCKBUD_LOG=log
 # To only detect inter,intra
 #export LOCKBUD_FLAGS="--detector-kind deadlock --crate-name-list inter,intra"
 # or shorter
@@ -25,11 +25,12 @@ export LOCKBUD_LOG=info
 #export LOCKBUD_FLAGS="--detector-kind deadlock --blacklist-mode --crate-name-list inter,intra"
 # or shorter
 #export LOCKBUD_FLAGS="-k deadlock -b -l inter,intra"
-#export LOCKBUD_FLAGS="-k deadlock -b -l cc"
+# export LOCKBUD_FLAGS="-k deadlock -b -l cc"
 #export LOCKBUD_FLAGS="-k atomicity_violation"
 #export LOCKBUD_FLAGS="-k memory"
 #export LOCKBUD_FLAGS="-k panic"
 export LOCKBUD_FLAGS="-k all"
+#export LOCKBUD_FLAG="-k chan"
 
 # Find all Cargo.tomls recursively under the detecting directory
 # and record them in cargo_dir.txt
