@@ -1,0 +1,63 @@
+# Copyright © 2016–2020 University of Malta
+
+# Copying and distribution of this file, with or without modification,
+# are permitted in any medium without royalty provided the copyright
+# notice and this notice are preserved. This file is offered as-is,
+# without any warranty.
+
+skip_tags: true
+
+environment:
+  matrix:
+    - TARGET: x86_64-pc-windows-gnu
+      CONFIG_SITE: C:/msys64/mingw64/etc/config.site
+      MINGW_CHOST: x86_64-w64-mingw32
+      MINGW_PACKAGE_PREFIX: mingw-w64-x86_64
+      MINGW_PREFIX: C:/msys64/mingw64
+      MSYSTEM: MINGW64
+      MSYSTEM_CARCH: x86_64
+      MSYSTEM_CHOST: x86_64-w64-mingw32
+      MSYSTEM_PREFIX: C:/msys64/mingw64
+    - TARGET: i686-pc-windows-gnu
+      CONFIG_SITE: C:/msys64/mingw32/etc/config.site
+      MINGW_CHOST: i686-w64-mingw32
+      MINGW_PACKAGE_PREFIX: mingw-w64-i686
+      MINGW_PREFIX: C:/msys64/mingw32
+      MSYSTEM: MINGW32
+      MSYSTEM_CARCH: i686
+      MSYSTEM_CHOST: i686-w64-mingw32
+      MSYSTEM_PREFIX: C:/msys64/mingw32
+
+cache:
+  - '%USERPROFILE%\.cargo\registry\cache'
+  - '%LOCALAPPDATA%\gmp-mpfr-sys'
+
+install:
+  - set PATH=C:\msys64\%MSYSTEM%\bin;C:\msys64\usr\bin;%USERPROFILE%\.cargo\bin;%PATH%
+  - curl -sSf -o rustup-init.exe https://win.rustup.rs
+  - rustup-init.exe -y --default-host %TARGET% --default-toolchain none --no-modify-path
+  - rustup --version
+  - rustup toolchain install --profile minimal beta-%TARGET% 1.37.0-%TARGET%
+  - rustup component add --toolchain beta-%TARGET% rustfmt clippy
+
+build: false
+
+before_test:
+  - bash -c "if cd ""$USERPROFILE/.cargo/registry"" && [ -d src ]; then rm -r src; fi"
+  - bash -c "if cd ""$USERPROFILE/.cargo/registry"" && [ -d cache ]; then find cache -name \*.crate | sort; fi"
+  - bash -c "if cd ""$LOCALAPPDATA"" && [ -d gmp-mpfr-sys ]; then find gmp-mpfr-sys -name \*.[ah] | sort; fi"
+
+test_script:
+  - cargo +beta-%TARGET% test --no-default-features --features "gmp-mpfr-sys gmp-mpfr-sys/mpc" -p gmp-mpfr-sys
+  - cargo +beta-%TARGET% test --features "fail-on-warnings serde" -p gmp-mpfr-sys -p rug
+  - cargo +beta-%TARGET% test --release --features "fail-on-warnings serde" -p gmp-mpfr-sys -p rug
+  - cargo +beta-%TARGET% fmt -- --check
+  - cargo +beta-%TARGET% clippy --all-targets --features "fail-on-warnings serde"
+  - rm Cargo.lock
+  - cargo +1.37.0-%TARGET% test --release --features "fail-on-warnings serde" -p gmp-mpfr-sys -p rug
+
+after_test:
+  - bash -c "cd ""$USERPROFILE/.cargo/registry""; for c in cache/*/*.crate; do s=src/${c#cache/}; if [ ! -e ${s/.crate/} ]; then rm -v $c; fi; done; find cache -name \*.crate | sort"
+  - bash -c "cd ""$LOCALAPPDATA""; find gmp-mpfr-sys -name \*.[ah] | sort"
+  # cache updating bug workaround
+  - bash -c "cd ""$LOCALAPPDATA""; find gmp-mpfr-sys -name \*.[ah] | sort > gmp-mpfr-sys/list"

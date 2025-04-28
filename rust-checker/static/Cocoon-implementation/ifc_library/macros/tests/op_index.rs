@@ -1,0 +1,20 @@
+#![feature(fn_traits, unboxed_closures)]
+extern crate secret_macros;
+extern crate secret_structs;
+
+use secret_macros::side_effect_free_attr;
+use secret_structs::lattice as lat;
+use secret_structs::secret as st;
+
+pub fn main() {
+  let temp_v = vec![1, 2, 3];
+  let t: st::Secret<Vec<i32>, lat::Label_A> = secret_structs::secret_block!(lat::Label_A { wrap_secret(temp_v) });
+  let result: st::Secret::<i32, lat::Label_A> = secret_structs::secret_block!(lat::Label_A {
+    let q = unwrap_secret_ref(&t);
+    wrap_secret(q[0])
+  });
+  println!(
+    "Result: {}",
+    result.declassify().get_value_consume(),
+  );
+}

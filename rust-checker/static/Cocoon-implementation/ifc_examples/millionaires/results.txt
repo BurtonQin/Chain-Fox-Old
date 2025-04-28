@@ -1,0 +1,608 @@
+#![feature(prelude_import)]
+#![feature(negative_impls)]
+#[prelude_import]
+use std::prelude::rust_2018::*;
+#[macro_use]
+extern crate std;
+mod millionaire {
+    pub mod millionaire {
+        use secret_macros::SecretBlockSafeDerive;
+        use secret_structs::lattice::ternary_lattice::self as lat;
+        use secret_structs::secret::secret::{self as st, SecretBlockSafe, InfoLeakFree};
+        pub struct Millionaire<L: InfoLeakFree, M: InfoLeakFree>
+        where
+            L: lat::MoreSecretThan<L>,
+            M: lat::MoreSecretThan<M>,
+        {
+            name: st::Secret<String, L>,
+            net_worth: st::Secret<i64, M>,
+        }
+        #[automatically_derived]
+        unsafe impl<L: InfoLeakFree, M: InfoLeakFree> SecretBlockSafe
+        for Millionaire<L, M>
+        where
+            L: lat::MoreSecretThan<L>,
+            M: lat::MoreSecretThan<M>,
+        {
+            unsafe fn check_all_types() {
+                secret_structs::secret::secret::check_type_is_secret_block_safe::<
+                    st::Secret<String, L>,
+                >();
+                secret_structs::secret::secret::check_type_is_secret_block_safe::<
+                    st::Secret<i64, M>,
+                >();
+            }
+        }
+        #[automatically_derived]
+        impl<L: InfoLeakFree, M: InfoLeakFree> !::std::ops::Drop for Millionaire<L, M>
+        where
+            L: lat::MoreSecretThan<L>,
+            M: lat::MoreSecretThan<M>,
+        {}
+        #[automatically_derived]
+        impl<L: InfoLeakFree, M: InfoLeakFree> !::std::ops::Deref for Millionaire<L, M>
+        where
+            L: lat::MoreSecretThan<L>,
+            M: lat::MoreSecretThan<M>,
+        {}
+        #[automatically_derived]
+        impl<L: InfoLeakFree, M: InfoLeakFree> !::std::ops::DerefMut
+        for Millionaire<L, M>
+        where
+            L: lat::MoreSecretThan<L>,
+            M: lat::MoreSecretThan<M>,
+        {}
+        impl<L: InfoLeakFree, M: InfoLeakFree> Millionaire<L, M>
+        where
+            L: lat::MoreSecretThan<L>,
+            M: lat::MoreSecretThan<M>,
+        {
+            pub fn unwrap_ref(&self) -> (&st::Secret<String, L>, &st::Secret<i64, M>) {
+                (&self.name, &self.net_worth)
+            }
+            pub fn new(
+                name: st::Secret<String, L>,
+                net_worth: st::Secret<i64, M>,
+            ) -> Millionaire<L, M> {
+                Millionaire { name, net_worth }
+            }
+            pub fn compare<R: InfoLeakFree, S: InfoLeakFree, T: InfoLeakFree>(
+                &self,
+                other: Millionaire<R, S>,
+            ) -> Millionaire<T, T>
+            where
+                T: lat::MoreSecretThan<R> + lat::MoreSecretThan<L>,
+                T: lat::MoreSecretThan<S> + lat::MoreSecretThan<M>,
+            {
+                let (name, net_worth) = if true {
+                    secret_structs::secret::secret::call_closure::<
+                        T,
+                        _,
+                        _,
+                    >(
+                        (|| -> _ {
+                            {
+                                {
+                                    if unsafe {
+                                        secret_structs::secret::secret::Secret::unwrap_unsafe::<
+                                            T,
+                                        >(&self.net_worth)
+                                    }
+                                        >= unsafe {
+                                            secret_structs::secret::secret::Secret::unwrap_unsafe::<
+                                                T,
+                                            >(&other.net_worth)
+                                        }
+                                    {
+                                        {
+                                            (
+                                                unsafe {
+                                                    secret_structs::secret::secret::Secret::<
+                                                        _,
+                                                        T,
+                                                    >::new(
+                                                        std::string::String::clone(unsafe {
+                                                            secret_structs::secret::secret::Secret::unwrap_unsafe::<
+                                                                T,
+                                                            >(&self.name)
+                                                        }),
+                                                    )
+                                                },
+                                                unsafe {
+                                                    secret_structs::secret::secret::Secret::<
+                                                        _,
+                                                        T,
+                                                    >::new(
+                                                        *unsafe {
+                                                            secret_structs::secret::secret::Secret::unwrap_unsafe::<
+                                                                T,
+                                                            >(&self.net_worth)
+                                                        },
+                                                    )
+                                                },
+                                            )
+                                        }
+                                    } else {
+                                        {
+                                            (
+                                                unsafe {
+                                                    secret_structs::secret::secret::Secret::<
+                                                        _,
+                                                        T,
+                                                    >::new(
+                                                        std::string::String::clone(unsafe {
+                                                            secret_structs::secret::secret::Secret::unwrap_unsafe::<
+                                                                T,
+                                                            >(&other.name)
+                                                        }),
+                                                    )
+                                                },
+                                                unsafe {
+                                                    secret_structs::secret::secret::Secret::<
+                                                        _,
+                                                        T,
+                                                    >::new(
+                                                        *unsafe {
+                                                            secret_structs::secret::secret::Secret::unwrap_unsafe::<
+                                                                T,
+                                                            >(&other.net_worth)
+                                                        },
+                                                    )
+                                                },
+                                            )
+                                        }
+                                    }
+                                }
+                            }
+                        }),
+                    )
+                } else {
+                    secret_structs::secret::secret::call_closure::<
+                        T,
+                        _,
+                        _,
+                    >(
+                        (|| -> _ {
+                            {
+                                {
+                                    unsafe {
+                                        secret_structs::secret::secret::check_expr_secret_block_safe(
+                                            &(if unsafe {
+                                                secret_structs::secret::secret::check_expr_secret_block_safe(
+                                                    &(unsafe {
+                                                        secret_structs::secret::secret::check_expr_secret_block_safe(
+                                                            &(secret_structs::secret::secret::SafePartialOrd::safe_ge(
+                                                                &unsafe {
+                                                                    secret_structs::secret::secret::Secret::unwrap_unsafe::<
+                                                                        T,
+                                                                    >(unsafe {
+                                                                        secret_structs::secret::secret::check_expr_secret_block_safe(
+                                                                            &(&unsafe {
+                                                                                secret_structs::secret::secret::check_expr_secret_block_safe(
+                                                                                    &(((&unsafe {
+                                                                                        secret_structs::secret::secret::check_expr_secret_block_safe(
+                                                                                            &(self),
+                                                                                        )
+                                                                                    }))
+                                                                                        .net_worth),
+                                                                                )
+                                                                            }),
+                                                                        )
+                                                                    })
+                                                                },
+                                                                &unsafe {
+                                                                    secret_structs::secret::secret::Secret::unwrap_unsafe::<
+                                                                        T,
+                                                                    >(unsafe {
+                                                                        secret_structs::secret::secret::check_expr_secret_block_safe(
+                                                                            &(&unsafe {
+                                                                                secret_structs::secret::secret::check_expr_secret_block_safe(
+                                                                                    &(((&unsafe {
+                                                                                        secret_structs::secret::secret::check_expr_secret_block_safe(
+                                                                                            &(other),
+                                                                                        )
+                                                                                    }))
+                                                                                        .net_worth),
+                                                                                )
+                                                                            }),
+                                                                        )
+                                                                    })
+                                                                },
+                                                            )),
+                                                        )
+                                                    }),
+                                                )
+                                            } {
+                                                {
+                                                    unsafe {
+                                                        secret_structs::secret::secret::check_expr_secret_block_safe(
+                                                            &(
+                                                                unsafe {
+                                                                    secret_structs::secret::secret::Secret::<
+                                                                        _,
+                                                                        T,
+                                                                    >::new(
+                                                                        std::string::String::clone(unsafe {
+                                                                            secret_structs::secret::secret::Secret::unwrap_unsafe::<
+                                                                                T,
+                                                                            >(&self.name)
+                                                                        }),
+                                                                    )
+                                                                },
+                                                                unsafe {
+                                                                    secret_structs::secret::secret::Secret::<
+                                                                        _,
+                                                                        T,
+                                                                    >::new(
+                                                                        *unsafe {
+                                                                            secret_structs::secret::secret::Secret::unwrap_unsafe::<
+                                                                                T,
+                                                                            >(&self.net_worth)
+                                                                        },
+                                                                    )
+                                                                },
+                                                            ),
+                                                        )
+                                                    }
+                                                }
+                                            } else {
+                                                {
+                                                    unsafe {
+                                                        secret_structs::secret::secret::check_expr_secret_block_safe(
+                                                            &(
+                                                                unsafe {
+                                                                    secret_structs::secret::secret::Secret::<
+                                                                        _,
+                                                                        T,
+                                                                    >::new(
+                                                                        std::string::String::clone(unsafe {
+                                                                            secret_structs::secret::secret::Secret::unwrap_unsafe::<
+                                                                                T,
+                                                                            >(&other.name)
+                                                                        }),
+                                                                    )
+                                                                },
+                                                                unsafe {
+                                                                    secret_structs::secret::secret::Secret::<
+                                                                        _,
+                                                                        T,
+                                                                    >::new(
+                                                                        *unsafe {
+                                                                            secret_structs::secret::secret::Secret::unwrap_unsafe::<
+                                                                                T,
+                                                                            >(&other.net_worth)
+                                                                        },
+                                                                    )
+                                                                },
+                                                            ),
+                                                        )
+                                                    }
+                                                }
+                                            }),
+                                        )
+                                    }
+                                }
+                            }
+                        }),
+                    )
+                };
+                Millionaire::<T, T>::new(name, net_worth)
+            }
+        }
+        pub fn compare_vec<L1: InfoLeakFree, L2: InfoLeakFree, L3: InfoLeakFree>(
+            mil_vec: &Vec<Millionaire<L1, L2>>,
+        ) -> Millionaire<L3, L3>
+        where
+            L3: lat::MoreSecretThan<L1> + lat::MoreSecretThan<L2>,
+        {
+            let richest_mil: (st::Secret<_, L3>, st::Secret<_, L3>) = if true {
+                secret_structs::secret::secret::call_closure::<
+                    L3,
+                    _,
+                    _,
+                >(
+                    (|| -> _ {
+                        {
+                            {
+                                let mut richest_mil = mil_vec[0usize];
+                                for mil in mil_vec {
+                                    {
+                                        if unsafe {
+                                            secret_structs::secret::secret::Secret::unwrap_unsafe::<
+                                                L3,
+                                            >(&mil.net_worth)
+                                        }
+                                            >= unsafe {
+                                                secret_structs::secret::secret::Secret::unwrap_unsafe::<
+                                                    L3,
+                                                >(&richest_mil.net_worth)
+                                            }
+                                        {
+                                            { richest_mil = mil }
+                                        } else {}
+                                    }
+                                }
+                                (
+                                    unsafe {
+                                        secret_structs::secret::secret::Secret::<
+                                            _,
+                                            L3,
+                                        >::new(
+                                            std::string::String::clone(unsafe {
+                                                secret_structs::secret::secret::Secret::unwrap_unsafe::<
+                                                    L3,
+                                                >(&richest_mil.name)
+                                            }),
+                                        )
+                                    },
+                                    unsafe {
+                                        secret_structs::secret::secret::Secret::<
+                                            _,
+                                            L3,
+                                        >::new(
+                                            *unsafe {
+                                                secret_structs::secret::secret::Secret::unwrap_unsafe::<
+                                                    L3,
+                                                >(&richest_mil.net_worth)
+                                            },
+                                        )
+                                    },
+                                )
+                            }
+                        }
+                    }),
+                )
+            } else {
+                secret_structs::secret::secret::call_closure::<
+                    L3,
+                    _,
+                    _,
+                >(
+                    (|| -> _ {
+                        {
+                            {
+                                let mut richest_mil = unsafe {
+                                    secret_structs::secret::secret::check_expr_secret_block_safe(
+                                        &(*(unsafe {
+                                            secret_structs::secret::secret::check_expr_secret_block_safe(
+                                                &(secret_structs::secret::secret::SafeIndex::safe_index(
+                                                    &unsafe {
+                                                        secret_structs::secret::secret::check_expr_secret_block_safe(
+                                                            &(mil_vec),
+                                                        )
+                                                    },
+                                                    &unsafe {
+                                                        secret_structs::secret::secret::check_expr_secret_block_safe(
+                                                            &(0usize),
+                                                        )
+                                                    },
+                                                )),
+                                            )
+                                        })),
+                                    )
+                                };
+                                unsafe {
+                                    secret_structs::secret::secret::check_expr_secret_block_safe(
+                                        &(for mil in unsafe {
+                                            secret_structs::secret::secret::check_expr_secret_block_safe(
+                                                &(mil_vec),
+                                            )
+                                        } {
+                                            {
+                                                unsafe {
+                                                    secret_structs::secret::secret::check_expr_secret_block_safe(
+                                                        &(if unsafe {
+                                                            secret_structs::secret::secret::check_expr_secret_block_safe(
+                                                                &(unsafe {
+                                                                    secret_structs::secret::secret::check_expr_secret_block_safe(
+                                                                        &(secret_structs::secret::secret::SafePartialOrd::safe_ge(
+                                                                            &unsafe {
+                                                                                secret_structs::secret::secret::Secret::unwrap_unsafe::<
+                                                                                    L3,
+                                                                                >(unsafe {
+                                                                                    secret_structs::secret::secret::check_expr_secret_block_safe(
+                                                                                        &(&unsafe {
+                                                                                            secret_structs::secret::secret::check_expr_secret_block_safe(
+                                                                                                &(((&unsafe {
+                                                                                                    secret_structs::secret::secret::check_expr_secret_block_safe(
+                                                                                                        &(mil),
+                                                                                                    )
+                                                                                                }))
+                                                                                                    .net_worth),
+                                                                                            )
+                                                                                        }),
+                                                                                    )
+                                                                                })
+                                                                            },
+                                                                            &unsafe {
+                                                                                secret_structs::secret::secret::Secret::unwrap_unsafe::<
+                                                                                    L3,
+                                                                                >(unsafe {
+                                                                                    secret_structs::secret::secret::check_expr_secret_block_safe(
+                                                                                        &(&unsafe {
+                                                                                            secret_structs::secret::secret::check_expr_secret_block_safe(
+                                                                                                &(((&unsafe {
+                                                                                                    secret_structs::secret::secret::check_expr_secret_block_safe(
+                                                                                                        &(richest_mil),
+                                                                                                    )
+                                                                                                }))
+                                                                                                    .net_worth),
+                                                                                            )
+                                                                                        }),
+                                                                                    )
+                                                                                })
+                                                                            },
+                                                                        )),
+                                                                    )
+                                                                }),
+                                                            )
+                                                        } {
+                                                            {
+                                                                unsafe {
+                                                                    secret_structs::secret::secret::check_expr_secret_block_safe(
+                                                                        &(unsafe {
+                                                                            secret_structs::secret::secret::check_expr_secret_block_safe(
+                                                                                &(richest_mil),
+                                                                            )
+                                                                        } = unsafe {
+                                                                            secret_structs::secret::secret::check_expr_secret_block_safe(
+                                                                                &(mil),
+                                                                            )
+                                                                        }),
+                                                                    )
+                                                                }
+                                                            }
+                                                        } else {}),
+                                                    )
+                                                }
+                                            }
+                                        }),
+                                    )
+                                }
+                                unsafe {
+                                    secret_structs::secret::secret::check_expr_secret_block_safe(
+                                        &(
+                                            unsafe {
+                                                secret_structs::secret::secret::Secret::<
+                                                    _,
+                                                    L3,
+                                                >::new(
+                                                    std::string::String::clone(unsafe {
+                                                        secret_structs::secret::secret::Secret::unwrap_unsafe::<
+                                                            L3,
+                                                        >(&richest_mil.name)
+                                                    }),
+                                                )
+                                            },
+                                            unsafe {
+                                                secret_structs::secret::secret::Secret::<
+                                                    _,
+                                                    L3,
+                                                >::new(
+                                                    *unsafe {
+                                                        secret_structs::secret::secret::Secret::unwrap_unsafe::<
+                                                            L3,
+                                                        >(&richest_mil.net_worth)
+                                                    },
+                                                )
+                                            },
+                                        ),
+                                    )
+                                }
+                            }
+                        }
+                    }),
+                )
+            };
+            Millionaire::<L3, L3>::new(richest_mil.0, richest_mil.1)
+        }
+    }
+}
+use secret_structs::secret::secret as st;
+use secret_structs::lattice::ternary_lattice as lat;
+use millionaire::millionaire as mil;
+fn main() {
+    let alice = mil::Millionaire::<
+        lat::None,
+        lat::A,
+    >::new(
+        st::Secret::<String, lat::None>::new(String::from("Alice")),
+        st::Secret::<i64, lat::A>::new(10),
+    );
+    let bob = mil::Millionaire::<
+        lat::None,
+        lat::B,
+    >::new(
+        st::Secret::<String, lat::None>::new(String::from("Bob")),
+        st::Secret::<i64, lat::B>::new(50),
+    );
+    let charlie = mil::Millionaire::<
+        lat::None,
+        lat::C,
+    >::new(
+        st::Secret::<String, lat::None>::new(String::from("Charlie")),
+        st::Secret::<i64, lat::C>::new(100),
+    );
+    let result_alice_bob: mil::Millionaire<lat::AB, lat::AB> = alice.compare(bob);
+    let result_alice_bob_charlie: mil::Millionaire<lat::ABC, lat::ABC> = charlie
+        .compare(result_alice_bob);
+    let ret = result_alice_bob_charlie.unwrap_ref();
+    {
+        ::std::io::_print(
+            ::core::fmt::Arguments::new_v1(
+                &["Largest net worth is: ", " with net worth ", "\n"],
+                &[
+                    ::core::fmt::ArgumentV1::new_display(&ret.0.declassify_ref()),
+                    ::core::fmt::ArgumentV1::new_display(&ret.1.declassify_ref()),
+                ],
+            ),
+        );
+    };
+    let mut mil_vec = Vec::<mil::Millionaire<lat::None, lat::ABC>>::new();
+    mil_vec
+        .push(
+            mil::Millionaire::<
+                lat::None,
+                lat::ABC,
+            >::new(
+                st::Secret::<String, lat::None>::new(String::from("Alice")),
+                st::Secret::<i64, lat::ABC>::new(200),
+            ),
+        );
+    mil_vec
+        .push(
+            mil::Millionaire::<
+                lat::None,
+                lat::ABC,
+            >::new(
+                st::Secret::<String, lat::None>::new(String::from("Bob")),
+                st::Secret::<i64, lat::ABC>::new(50),
+            ),
+        );
+    mil_vec
+        .push(
+            mil::Millionaire::<
+                lat::None,
+                lat::ABC,
+            >::new(
+                st::Secret::<String, lat::None>::new(String::from("Charlie")),
+                st::Secret::<i64, lat::ABC>::new(100),
+            ),
+        );
+    mil_vec
+        .push(
+            mil::Millionaire::<
+                lat::None,
+                lat::ABC,
+            >::new(
+                st::Secret::<String, lat::None>::new(String::from("Darlene")),
+                st::Secret::<i64, lat::ABC>::new(250),
+            ),
+        );
+    mil_vec
+        .push(
+            mil::Millionaire::<
+                lat::None,
+                lat::ABC,
+            >::new(
+                st::Secret::<String, lat::None>::new(String::from("Edith")),
+                st::Secret::<i64, lat::ABC>::new(60),
+            ),
+        );
+    let ret: mil::Millionaire<lat::ABC, lat::ABC> = mil::compare_vec(&mil_vec);
+    {
+        ::std::io::_print(
+            ::core::fmt::Arguments::new_v1(
+                &["Largest net worth is: ", " with net worth ", "\n"],
+                &[
+                    ::core::fmt::ArgumentV1::new_display(
+                        &ret.unwrap_ref().0.declassify_ref(),
+                    ),
+                    ::core::fmt::ArgumentV1::new_display(
+                        &ret.unwrap_ref().1.declassify_ref(),
+                    ),
+                ],
+            ),
+        );
+    };
+}

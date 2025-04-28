@@ -1,0 +1,246 @@
+# Copyright © 2016–2020 University of Malta
+
+# Copying and distribution of this file, with or without modification,
+# are permitted in any medium without royalty provided the copyright
+# notice and this notice are preserved. This file is offered as-is,
+# without any warranty.
+
+stages:
+  - clibs
+  - test
+
+before_script:
+  - getconf LONG_BIT
+  - rustup self update
+  - rustup --version
+  - if [ -n "$TOOLCHAIN" ]; then rustup toolchain install --profile minimal $TOOLCHAIN; fi
+  - if [ -d cargo/registry/cache ]; then rm -rf $CARGO_HOME/registry/cache && mkdir -p $CARGO_HOME/registry && cp -R cargo/registry/cache $CARGO_HOME/registry/ && echo Copied registry/cache; fi
+  - (if cd $CARGO_HOME/registry && [ -d src ]; then rm -r src; fi)
+  - (if cd $CARGO_HOME/registry && [ -d cache ]; then find cache -name \*.crate | sort; fi)
+  - export GMP_MPFR_SYS_CACHE=$CI_PROJECT_DIR/gmp-mpfr-sys-cache
+
+after_script:
+  - (if cd $CARGO_HOME/registry && [ -d cache ]; then for c in cache/*/*.crate; do s=src/${c#cache/}; if [ ! -e ${s%.crate} ]; then rm -v $c; fi; done; find cache -name \*.crate | sort; fi)
+  - rm -rf cargo
+  - mkdir -p cargo/registry
+  - cp -R $CARGO_HOME/registry/cache cargo/registry/ && echo Updated registry/cache
+
+clibs-x86_64-gnulinux:
+  image: amd64/rust:1
+  stage: clibs
+  variables:
+    TOOLCHAIN: beta-x86_64
+  cache:
+    key: $CI_JOB_NAME
+    paths:
+    - cargo/
+    - gmp-mpfr-sys-cache/
+  script:
+  - cargo +$TOOLCHAIN fetch
+  - cargo +$TOOLCHAIN test --no-default-features --features "gmp-mpfr-sys gmp-mpfr-sys/mpc" -p gmp-mpfr-sys
+  artifacts:
+    paths:
+    - cargo/
+    - gmp-mpfr-sys-cache/
+    expire_in: 1 day
+
+beta-x86_64-gnulinux:
+  image: amd64/rust:1
+  stage: test
+  dependencies:
+  - clibs-x86_64-gnulinux
+  variables:
+    TOOLCHAIN: beta-x86_64
+  script:
+  - etc/test.sh
+
+stable-x86_64-gnulinux:
+  image: amd64/rust:1
+  stage: test
+  dependencies:
+  - clibs-x86_64-gnulinux
+  variables:
+    TOOLCHAIN: stable-x86_64
+  script:
+  - etc/test.sh
+
+nightly-x86_64-gnulinux:
+  image: amd64/rust:1
+  stage: test
+  dependencies:
+  - clibs-x86_64-gnulinux
+  variables:
+    TOOLCHAIN: nightly-x86_64
+  script:
+  - etc/test.sh
+
+1.37.0-x86_64-gnulinux:
+  image: amd64/rust:1
+  stage: test
+  dependencies:
+  - clibs-x86_64-gnulinux
+  variables:
+    TOOLCHAIN: 1.37.0-x86_64
+  script:
+  - etc/test.sh
+
+stable-x86_64-gnulinux-tarpaulin:
+  image: amd64/rust:1
+  stage: test
+  cache:
+    key: $CI_JOB_NAME
+    paths:
+    - cargo/
+  dependencies:
+  - clibs-x86_64-gnulinux
+  variables:
+    TOOLCHAIN: stable-x86_64
+    REQ_COVERAGE: "82.2"
+  script:
+  - cargo install --version 0.16.0 --locked cargo-tarpaulin
+  - etc/extract-doc-tests.sh
+  - stdbuf -oL etc/invoke-tarpaulin.sh | tee tarpaulin.log
+  - etc/extract-doc-tests.sh restore
+  - echo "Check that coverage not less than $REQ_COVERAGE%"
+  - tail -1 tarpaulin.log | awk '{ if ($1 < '$REQ_COVERAGE') { exit 1 } }'
+
+stable-x86_64-gnulinux-valgrind:
+  image: amd64/rust:1
+  stage: test
+  dependencies:
+  - clibs-x86_64-gnulinux
+  variables:
+    TOOLCHAIN: stable-x86_64
+    VALGRIND_OPTIONS: --leak-check=full --show-leak-kinds=all --errors-for-leak-kinds=all --track-origins=yes --error-exitcode=1 --gen-suppressions=all
+    RUSTFLAGS: -g
+  script:
+  - apt-get update -qq && apt-get install -y -qq valgrind
+  - etc/extract-doc-tests.sh
+  - cargo +$TOOLCHAIN test --features serde --lib
+  - valgrind $VALGRIND_OPTIONS "$(ls target/debug/deps/rug* | grep -v '\.d')"
+  - cargo +$TOOLCHAIN test --release --features serde --lib
+  - valgrind $VALGRIND_OPTIONS "$(ls target/release/deps/rug* | grep -v '\.d')"
+  - etc/extract-doc-tests.sh restore
+
+beta-x86_64-gnulinux-tidy:
+  image: amd64/rust:1
+  stage: test
+  dependencies:
+  - clibs-x86_64-gnulinux
+  variables:
+    TOOLCHAIN: beta-x86_64
+  script:
+  - rustup component add --toolchain $TOOLCHAIN rustfmt clippy
+  - etc/tidy.sh
+
+clibs-i686-gnulinux:
+  image: i386/rust:1
+  stage: clibs
+  variables:
+    TOOLCHAIN: beta-i686
+  cache:
+    key: $CI_JOB_NAME
+    paths:
+    - cargo/
+    - gmp-mpfr-sys-cache/
+  script:
+  - cargo +$TOOLCHAIN fetch
+  - cargo +$TOOLCHAIN test --no-default-features --features "gmp-mpfr-sys gmp-mpfr-sys/mpc" -p gmp-mpfr-sys
+  artifacts:
+    paths:
+    - cargo/
+    - gmp-mpfr-sys-cache/
+    expire_in: 1 day
+
+beta-i686-gnulinux:
+  image: i386/rust:1
+  stage: test
+  dependencies:
+  - clibs-i686-gnulinux
+  variables:
+    TOOLCHAIN: beta-i686
+  script:
+  - etc/test.sh
+
+stable-i686-gnulinux:
+  image: i386/rust:1
+  stage: test
+  dependencies:
+  - clibs-i686-gnulinux
+  variables:
+    TOOLCHAIN: stable-i686
+  script:
+  - etc/test.sh
+
+nightly-i686-gnulinux:
+  image: i386/rust:1
+  stage: test
+  dependencies:
+  - clibs-i686-gnulinux
+  variables:
+    TOOLCHAIN: nightly-i686
+  script:
+  - etc/test.sh
+
+1.37.0-i686-gnulinux:
+  image: i386/rust:1
+  stage: test
+  dependencies:
+  - clibs-i686-gnulinux
+  variables:
+    TOOLCHAIN: 1.37.0-i686
+  script:
+  - etc/test.sh
+
+stable-i686-gnulinux-valgrind:
+  image: i386/rust:1
+  stage: test
+  dependencies:
+  - clibs-i686-gnulinux
+  variables:
+    TOOLCHAIN: stable-i686
+    VALGRIND_OPTIONS: --leak-check=full --show-leak-kinds=all --errors-for-leak-kinds=all --track-origins=yes --error-exitcode=1 --gen-suppressions=all
+    RUSTFLAGS: -g
+  script:
+  - apt-get update -qq && apt-get install -y -qq valgrind
+  - etc/extract-doc-tests.sh
+  - cargo +$TOOLCHAIN test --features serde --lib
+  - valgrind $VALGRIND_OPTIONS "$(ls target/debug/deps/rug* | grep -v '\.d')"
+  - cargo +$TOOLCHAIN test --release --features serde --lib
+  - valgrind $VALGRIND_OPTIONS "$(ls target/release/deps/rug* | grep -v '\.d')"
+  - etc/extract-doc-tests.sh restore
+
+beta-i686-gnulinux-tidy:
+  image: i386/rust:1
+  stage: test
+  dependencies:
+  - clibs-i686-gnulinux
+  variables:
+    TOOLCHAIN: beta-i686
+  script:
+  - rustup component add --toolchain $TOOLCHAIN rustfmt clippy
+  - etc/tidy.sh
+
+pages:
+  image: amd64/rust:1
+  stage: test
+  cache:
+    key: $CI_JOB_NAME
+    paths:
+    - cargo/
+  dependencies:
+  - clibs-x86_64-gnulinux
+  variables:
+    TOOLCHAIN: nightly-x86_64
+  script:
+  - rm -rf public
+  - mkdir public
+  - cp etc/rug.svg public
+  - cargo +$TOOLCHAIN doc --no-deps --features serde
+  - mv target/doc public/dev
+  - bash etc/gen-doc-index.sh
+  artifacts:
+    paths:
+    - public
+  only:
+  - master

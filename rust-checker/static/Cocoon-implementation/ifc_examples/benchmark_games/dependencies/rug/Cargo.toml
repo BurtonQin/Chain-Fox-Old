@@ -1,0 +1,53 @@
+# Copyright © 2016–2020 University of Malta
+
+# Copying and distribution of this file, with or without modification,
+# are permitted in any medium without royalty provided the copyright
+# notice and this notice are preserved. This file is offered as-is,
+# without any warranty.
+
+[package]
+name = "rug"
+version = "1.12.0"
+authors = ["Trevor Spiteri <trevor.spiteri@um.edu.mt>"]
+edition = "2018"
+description = "Arbitrary-precision integers, rational, floating-point and complex numbers based on GMP, MPFR and MPC"
+documentation = "https://docs.rs/rug"
+repository = "https://gitlab.com/tspiteri/rug"
+readme = "README.md"
+keywords = ["gmp", "bignum", "mathematics", "numerics"]
+categories = ["api-bindings", "science"]
+license = "LGPL-3.0+"
+
+[features]
+default = ["integer", "rational", "float", "complex", "rand"]
+integer = ["gmp-mpfr-sys"]
+rational = ["integer"]
+float = ["gmp-mpfr-sys/mpfr"]
+complex = ["float", "gmp-mpfr-sys/mpc"]
+rand = ["integer"]
+fail-on-warnings = []
+
+[dependencies.az]
+version = "1.1"
+
+[dependencies.libc]
+version = "0.2.44"
+default-features = false
+
+[dependencies.gmp-mpfr-sys]
+version = "~1.4"
+default-features = false
+optional = true
+
+[dependencies.serde]
+version = "1.0.25"
+optional = true
+
+[dev-dependencies]
+serde_test = "1"
+serde_json = "1"
+bincode = "1"
+byteorder = "1"
+
+[package.metadata.docs.rs]
+features = ["serde"]

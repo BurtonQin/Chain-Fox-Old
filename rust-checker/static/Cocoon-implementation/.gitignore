@@ -1,0 +1,19 @@
+Cargo.lock
+target
+expansion.txt
+ifc_examples/spotify-tui/src/modified_results.txt
+**/.DS_Store
+
+# vim
+*.swp
+Session.vim
+benchmark_games/data/*.csv
+benchmark_games/data/originals/*.csv
+19-docker-image.tgz
+19-source-code.tgz
+19.tgz
+ifc_examples/spotify-tui*/modified_results.txt
+benchmark_games/data/*.csv
+benchmark_games/data/originals/*.csv
+.vscode/settings.json
+cocoon-source-code

@@ -1,0 +1,9 @@
+/target/
+**/*.rs.bk
+.idea/
+.spotify_token_cache.json
+.tern-port
+cmake-build-debug
+*/.test_token
+Cargo.lock
+.DS_Store

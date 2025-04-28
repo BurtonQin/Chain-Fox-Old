@@ -1,0 +1,12 @@
+[package]
+name = "binary-trees"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+bumpalo = "=3.11.1"
+rayon = "1.5.3"
+secret_structs = { path = "../../../ifc_library/secret_structs" }
+secret_macros = { path = "../../../ifc_library/macros" }

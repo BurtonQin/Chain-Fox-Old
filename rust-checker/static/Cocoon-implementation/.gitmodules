@@ -1,0 +1,3 @@
+[submodule "ifc_examples/benchmark_games/dependencies/rug"]
+	path = ifc_examples/benchmark_games/dependencies/rug
+	url = https://gitlab.com/tspiteri/rug.git

@@ -1,0 +1,12 @@
+[package]
+name = "k-nucleotide"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+tokio-threadpool = "0.1"
+itertools = "0.10.5"
+num = "0.4"
+hashbrown = "0.12"
