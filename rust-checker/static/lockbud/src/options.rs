@@ -26,6 +26,7 @@ pub enum DetectorKind {
     AtomicityViolation,
     Memory,
     Panic,
+    Chan,
     // More to be supported.
 }
 
@@ -37,7 +38,7 @@ fn make_options_parser<'help>() -> Command<'help> {
             Arg::new("kind")
                 .short('k')
                 .long("detector-kind")
-                .possible_values(["deadlock", "atomicity_violation", "memory", "all", "panic"])
+                .possible_values(["deadlock", "atomicity_violation", "memory", "all", "panic", "chan"])
                 .default_values(&["deadlock"])
                 .help("The detector kind"),
         )
@@ -86,6 +87,7 @@ impl Options {
             Some("deadlock") => DetectorKind::Deadlock,
             Some("atomicity_violation") => DetectorKind::AtomicityViolation,
             Some("memory") => DetectorKind::Memory,
+            Some("chan") => DetectorKind::Chan,
             Some("all") => DetectorKind::All,
             Some("panic") => DetectorKind::Panic,
             _ => return Err("UnsupportedDetectorKind")?,

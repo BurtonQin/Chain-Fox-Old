@@ -109,7 +109,7 @@ impl<'tcx> DeadlockDetector<'tcx> {
                     .map(|condvar_api| (instance_id, condvar_api))
             })
             .collect()
-    }
+    } 
 
     /// Detect deadlock inter-procedurally and returns bug report.
     pub fn detect<'a>(
