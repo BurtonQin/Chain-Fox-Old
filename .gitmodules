@@ -10,3 +10,6 @@
 [submodule "rust-checker/dynamic/shuttle"]
 	path = rust-checker/dynamic/shuttle
 	url = https://github.com/Chain-Fox/shuttle
+[submodule "solidity-checker/slither"]
+	path = solidity-checker/slither
+	url = https://github.com/Chain-Fox/slither
