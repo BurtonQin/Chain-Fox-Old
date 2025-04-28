@@ -7,3 +7,9 @@
 [submodule "rust-checker/dynamic/shuttle"]
 	path = rust-checker/dynamic/shuttle
 	url = https://github.com/awslabs/shuttle.git
+[submodule "go-checker/GFuzz"]
+	path = go-checker/GFuzz
+	url = https://github.com/Chain-Fox/GFuzz
+[submodule "go-checker/GCatch"]
+	path = go-checker/GCatch
+	url = https://github.com/Chain-Fox/GCatch
