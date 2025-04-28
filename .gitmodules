@@ -28,3 +28,6 @@
 [submodule "rust-checker/static/Rudra"]
 	path = rust-checker/static/Rudra
 	url = https://github.com/Chain-Fox/Rudra
+[submodule "rust-checker/verifier/kani"]
+	path = rust-checker/verifier/kani
+	url = https://github.com/model-checking/kani.git
