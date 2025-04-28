@@ -19,3 +19,12 @@
 [submodule "Cocoon-implementation"]
 	path = Cocoon-implementation
 	url = git@github.com:Chain-Fox/Cocoon-implementation.git
+[submodule "rust-checker/static/MIRAI"]
+	path = rust-checker/static/MIRAI
+	url = https://github.com/Chain-Fox/MIRAI
+[submodule "rust-checker/static/RAPx"]
+	path = rust-checker/static/RAPx
+	url = https://github.com/Chain-Fox/RAPx
+[submodule "rust-checker/static/Rudra"]
+	path = rust-checker/static/Rudra
+	url = https://github.com/Chain-Fox/Rudra
