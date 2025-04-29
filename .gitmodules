@@ -7,9 +7,6 @@
 [submodule "go-checker/GCatch"]
 	path = go-checker/GCatch
 	url = https://github.com/Chain-Fox/GCatch
-[submodule "rust-checker/dynamic/shuttle"]
-	path = rust-checker/dynamic/shuttle
-	url = https://github.com/Chain-Fox/shuttle
 [submodule "solidity-checker/slither"]
 	path = solidity-checker/slither
 	url = https://github.com/Chain-Fox/slither
@@ -31,3 +28,6 @@
 [submodule "rust-checker/verifier/kani"]
 	path = rust-checker/verifier/kani
 	url = https://github.com/model-checking/kani.git
+[submodule "rust-checker/dynamic/shuttle"]
+	path = rust-checker/dynamic/shuttle
+	url = https://github.com/Chain-Fox/shuttle
