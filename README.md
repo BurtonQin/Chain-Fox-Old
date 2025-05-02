@@ -28,7 +28,7 @@ For now we are supporting 14 cutting-edge checkers. Deploying them to your worki
 
 According to a recent survey, most blockchain-related projects are implemented in Rust, Go, Solidity, and C++. Thus we focus on these languages. Besides them, more recent languages (like Move) are to be added.
 
-We are also planning to add more checkers see [here](github.com/BurtonQin/Awesome-Rust-Checkers).
+We are also planning to add more checkers see [here](github.com/BurtonQin/Awesome-Rust-Checker).
 
 
 | Checker | Categories | Detected Bug Types |
