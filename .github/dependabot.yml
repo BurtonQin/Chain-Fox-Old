@@ -1,0 +1,22 @@
+version: 2
+updates:
+# Update Rust dependencies
+- package-ecosystem: 'cargo'
+  directory: '/'
+  schedule:
+    interval: 'daily'
+  open-pull-requests-limit: 10
+
+# Update Go dependencies
+- package-ecosystem: 'gomod'
+  directory: '/'
+  schedule:
+    interval: 'daily'
+  open-pull-requests-limit: 10
+
+# Update npm dependencies
+- package-ecosystem: 'npm'
+  directory: '/'
+  schedule:
+    interval: 'daily'
+  open-pull-requests-limit: 10
