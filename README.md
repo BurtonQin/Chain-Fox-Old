@@ -11,8 +11,6 @@
   **CA:** `RhFVq1Zt81VvcoSEMSyCGZZv5SwBdA8MV7w4HEMpump`
 </div>
 
-> ⚠️ This aims to be a commercial product. The original lockbud is maintained in [lockbud](https://github.com/BurtonQin/lockbud). Issues will be resolved there.
-
 ## 🎯 Why Chain-Fox
 
 Security is the biggest concern for blockchain and smart contract users and developers.
@@ -29,7 +27,7 @@ For now we are supporting 14 cutting-edge checkers. Deploying them to your worki
 
 According to a recent survey, most blockchain-related projects are implemented in Rust, Go, Solidity, and C++. Thus we focus on these languages. Besides them, more recent languages (like Move) are to be added.
 
-We are also planning to add more checkers see [here](https://github.com/BurtonQin/Awesome-Rust-Checker).
+We are also planning to add more checkers see [here](https://github.com/Chain-Fox/Awesome-Rust-Checker).
 
 | Checker | Categories | Detected Bug Types |
 | ------- | ---------- | --------|
