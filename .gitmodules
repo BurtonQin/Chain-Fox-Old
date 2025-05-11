@@ -31,3 +31,9 @@
 [submodule "rust-checker/dynamic/shuttle"]
 	path = rust-checker/dynamic/shuttle
 	url = https://github.com/Chain-Fox/shuttle
+[submodule "integration/github-ci-checker"]
+	path = integration/github-ci-checker
+	url = https://github.com/Chain-Fox/os-checker
+[submodule "integration/local-checker"]
+	path = integration/local-checker
+	url = https://github.com/Chain-Fox/os-checker-local
