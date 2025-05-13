@@ -29,8 +29,9 @@ export LOCKBUD_LOG=log
 #export LOCKBUD_FLAGS="-k atomicity_violation"
 #export LOCKBUD_FLAGS="-k memory"
 #export LOCKBUD_FLAGS="-k panic"
-export LOCKBUD_FLAGS="-k all"
+#export LOCKBUD_FLAGS="-k all"
 #export LOCKBUD_FLAG="-k chan"
+export LOCKBUD_FLAGS="-k all -o chain-fox-detect.json -b -l cc,log,tokio,tokio_util,parking_lot_core"
 
 # Find all Cargo.tomls recursively under the detecting directory
 # and record them in cargo_dir.txt
