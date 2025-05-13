@@ -55,16 +55,16 @@ See `./detection-results/'Github Bug Report.xlsx'`
 ## 🛣️ Roadmap
 
 - [x] An integrated environment for the deployment of all the Rust static checkers.
-- [x] Add Go checkers
-- [x] Add solidity checkers
-- [x] Add C++ checkers
-- [ ] Add a CI for detection
-- [ ] A simple bug clear bug report
-- [ ] Polish bug reports
-- [ ] An all-in-one platform for blockchain security
-- [ ] Support more languages and checkers
-- [ ] A security report for blockchain ecosystem
-- [ ] Monitor of supply-chain attackers to blockchain systems
+- [x] Parse the various detection results and connect to the frontend.
+- [x] Implement the rule engine to improve the accuracy of detection results.
+- [x] Add options to dump the result to json files for easier parsing and integration with AI.
+- [ ] Design and implement APIs for better integration with web3 ecosystems.
+- [ ] Test and integrate more solidity checkers and parsing the results.
+- [ ] Integrate different levels of checkers with the payment and staking systems.
+- [ ] Build new middle-layer analysis result cache to reduce the computation costs.
+- [ ] Launch a large-scale scan for the web3 foundational infrustructure.
+- [ ] To become a basic security service provider for web3
+
 
 ## 🤝 Contributing
 
