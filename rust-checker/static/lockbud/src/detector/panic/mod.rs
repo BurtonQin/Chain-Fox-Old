@@ -27,19 +27,19 @@ static PANIC_API_REGEX: Lazy<HashMap<PanicAPI, Regex>> = Lazy::new(|| {
     let mut m = HashMap::new();
     m.insert(
         PanicAPI::ResultUnwrap,
-        Regex::new(r"Result::<.+>::unwrap").unwrap(),
+        Regex::new(r"Result::<.+>::unwrap\b").unwrap(),
     );
     m.insert(
         PanicAPI::ResultExpect,
-        Regex::new(r"Result::<.+>::expect").unwrap(),
+        Regex::new(r"Result::<.+>::expect\b").unwrap(),
     );
     m.insert(
         PanicAPI::OptionUnwrap,
-        Regex::new(r"Option::<.+>::unwrap").unwrap(),
+        Regex::new(r"Option::<.+>::unwrap\b").unwrap(),
     );
     m.insert(
         PanicAPI::OptionExpect,
-        Regex::new(r"Option::<.+>::expect").unwrap(),
+        Regex::new(r"Option::<.+>::expect\b").unwrap(),
     );
     m.insert(PanicAPI::PanicFmt, Regex::new(r"rt::panic_fmt").unwrap());
     m.insert(
@@ -59,6 +59,8 @@ mod tests {
         assert!(PANIC_API_REGEX[&PanicAPI::ResultExpect].is_match("Result::<i32, String>::expect"));
         assert!(PANIC_API_REGEX[&PanicAPI::OptionUnwrap].is_match("Option::<i32>::unwrap"));
         assert!(PANIC_API_REGEX[&PanicAPI::OptionExpect].is_match("Option::<i32>::expect"));
+        assert!(!PANIC_API_REGEX[&PanicAPI::OptionExpect].is_match("Option::<i32>::expect_or"));
+        assert!(!PANIC_API_REGEX[&PanicAPI::OptionExpect].is_match("Option::<i32>::expect_or_default"));
         assert!(PANIC_API_REGEX[&PanicAPI::PanicFmt].is_match("rt::panic_fmt"));
         assert!(PANIC_API_REGEX[&PanicAPI::AssertFailed].is_match("core::panicking::assert_failed"));
         assert!(PANIC_API_REGEX[&PanicAPI::Panic].is_match("core::panicking::panic"));
